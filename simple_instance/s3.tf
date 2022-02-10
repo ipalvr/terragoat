@@ -17,4 +17,11 @@ resource "aws_s3_bucket" "docking_bay" {
     git_repo             = "terragoat"
     yor_trace            = "58fd9c4c-4ffb-428f-aee6-3bc159ef436d"
   }
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "Properties/BucketEncryption/ServerSideEncryptionConfiguration/[0]/ServerSideEncryptionByDefault/SSEAlgorithm:aws:kms"
+      }
+    }
+  }
 }
