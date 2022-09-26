@@ -23,9 +23,9 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     enabled = false
   }
   tags = {
-    git_commit           = "667e53ce03f357a393b224dc7afa476e8b60f0a9"
+    git_commit           = "35a8310a74c988eda32dd7afee21b4c30a96b288"
     git_file             = "terraform/azure/aks.tf"
-    git_last_modified_at = "2022-09-26 15:27:15"
+    git_last_modified_at = "2022-09-26 15:34:24"
     git_last_modified_by = "mweibeler@gmail.com"
     git_modifiers        = "mweibeler/nimrodkor"
     git_org              = "ipalvr"
