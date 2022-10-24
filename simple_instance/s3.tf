@@ -27,6 +27,19 @@ resource "aws_s3_bucket" "docking_bay" {
 }
 
 
+resource "aws_s3_bucket" "docking_bay_log_bucket" {
+  bucket = "docking_bay-log-bucket"
+}
+
+resource "aws_s3_bucket_logging" "docking_bay" {
+  bucket = aws_s3_bucket.docking_bay.id
+
+  target_bucket = aws_s3_bucket.docking_bay_log_bucket.id
+  target_prefix = "log/"
+}
+
+
+
 resource "aws_s3_bucket_versioning" "docking_bay" {
   bucket = aws_s3_bucket.docking_bay.id
 
