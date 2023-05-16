@@ -1,4 +1,4 @@
-name: Bridgecrew
+name: Prisma Cloud Scan
 on:
   pull_request:
   push:
@@ -6,17 +6,16 @@ on:
       - master
 jobs:
   scan:
+    name: Scan image
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
     steps:
-    - uses: actions/checkout@v2
-    - name: Run Bridgecrew 
-      id: Bridgecrew
-      uses: bridgecrewio/bridgecrew-action@master
-      env:
-        PRISMA_API_URL: https://api.prismacloud.io
-      with:
-        api-key: ${{ secrets.BC_API_KEY }}
-        directory: terraform/
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run Prisma Cloud 
+        id: scan
+        uses: bridgecrewio/checkov-action@master 
+        env:
+          PRISMA_API_URL: https://api4.prismacloud.io
+        with:
+          api-key: ${{ secrets.BC_API_KEY }}
