@@ -29,6 +29,9 @@ resource "aws_s3_bucket" "docking_bay" {
 
 resource "aws_s3_bucket" "docking_bay_log_bucket" {
   bucket = "docking_bay-log-bucket"
+  tags = {
+    yor_trace = "8e5b9ba9-8c1c-4106-bf31-9390439eeb51"
+  }
 }
 
 resource "aws_s3_bucket_logging" "docking_bay" {
